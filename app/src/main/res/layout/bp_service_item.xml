@@ -2,17 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     android:background="@drawable/grid_border"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingTop="10dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/service_image"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:layout_centerHorizontal="true"
         android:scaleType="centerInside" />
 
@@ -23,8 +23,9 @@
         android:layout_below="@+id/service_image"
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
-        android:textSize="9dp"
         android:singleLine="true"
-        android:text="Event Name" />
+        android:text="Event Name"
+        android:textColor="@color/black"
+        android:textSize="10sp" />
 
 </RelativeLayout>

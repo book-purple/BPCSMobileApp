@@ -1,5 +1,6 @@
 package com.csapp.bp.bookpurple;
 
+import com.csapp.bp.bookpurple.model.BusinessModel;
 import com.csapp.bp.bookpurple.model.EventModel;
 import com.csapp.bp.bookpurple.model.LandingOffersModel;
 import com.csapp.bp.bookpurple.model.ServiceModel;
@@ -21,6 +22,7 @@ public class DummyDataProvider {
     private List<LandingOffersModel> landingOffersModels;
     private List<EventModel> eventModels;
     private List<ServiceModel> serviceModels;
+    private List<BusinessModel> businessModels1;
 
     public List<LandingOffersModel> getLandingOffersModels() {
         return landingOffersModels;
@@ -32,6 +34,10 @@ public class DummyDataProvider {
 
     public List<ServiceModel> getServiceModels() {
         return serviceModels;
+    }
+
+    public List<BusinessModel> getBusinessModels1 () {
+        return businessModels1;
     }
 
     public List<String> getSericeName() {
@@ -60,9 +66,12 @@ public class DummyDataProvider {
         eventModels = new ArrayList<>();
         serviceModels = new ArrayList<>();
 
+        businessModels1 = new ArrayList<>();
+
         populateLandingOffersBanner();
         populateEventModels();
         populateServiceModels();
+        populateBusinessModels1();
     }
 
     private void populateLandingOffersBanner() {
@@ -71,6 +80,15 @@ public class DummyDataProvider {
             landingOffersModel.text = landingOfferBannerName.get(i);
             landingOffersModel.color = landingOfferColor.get(i);
             landingOffersModels.add(landingOffersModel);
+        }
+    }
+
+    private void populateBusinessModels1() {
+        for (int i = 0; i < landingOfferBannerName.size(); i++) {
+            BusinessModel businessModel = new BusinessModel();
+            businessModel.text = landingOfferBannerName.get(i);
+            businessModel.color = landingOfferColor.get(i);
+            businessModels1.add(businessModel);
         }
     }
 

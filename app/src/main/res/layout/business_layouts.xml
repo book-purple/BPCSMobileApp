@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/bp_business_rl_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/offer"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/bp_iv_1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Top Caters"
+            android:layout_toRightOf="@+id/bp_iv_1"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/bp_btv_1"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/bp_brv_1"
+            android:layout_below="@+id/bp_btv_1"
+            android:overScrollMode="never"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/bp_business_rl_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/tick"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/bp_iv_2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Treding Wedding Planners"
+            android:layout_toRightOf="@+id/bp_iv_2"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/bp_btv_2"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/bp_brv_2"
+            android:layout_below="@+id/bp_btv_2"
+            android:overScrollMode="never"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+    </RelativeLayout>
+
+</LinearLayout>

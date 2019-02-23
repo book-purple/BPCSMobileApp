@@ -4,21 +4,21 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:paddingLeft="10dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
 
     <RelativeLayout
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="70dp"
         android:padding="10dp"
-        android:id="@+id/offer_banner_rl"
+        android:id="@+id/b_banner_rl"
         android:background="@drawable/bottom_menu_layout_style">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sample"
-            android:id="@+id/offer_banner_text"
+            android:id="@+id/b_banner_tv"
             android:textColor="@color/white"
             android:textStyle="bold" />
 

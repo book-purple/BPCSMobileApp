@@ -6,6 +6,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.csapp.bp.bookpurple.adapter.BAdapter1;
+import com.csapp.bp.bookpurple.adapter.BAdapter2;
 import com.csapp.bp.bookpurple.adapter.GridEventAdapter;
 import com.csapp.bp.bookpurple.adapter.GridServiceAdapter;
 import com.csapp.bp.bookpurple.adapter.OffersAdapter;
@@ -21,6 +23,13 @@ public class BPMainActivity extends AppCompatActivity {
     private RecyclerView eventRecyclerView;
     private GridLayoutManager gridServiceLayoutManager;
     private RecyclerView serviceRecyclerView;
+
+    /*Buiness Banners*/
+    private RecyclerView brv1;
+    private BAdapter1 bAdapter1;
+
+    private RecyclerView brv2;
+    private BAdapter2 bAdapter2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,16 @@ public class BPMainActivity extends AppCompatActivity {
         gridServiceLayoutManager = new GridLayoutManager(this, 4);
         serviceRecyclerView.setLayoutManager(gridServiceLayoutManager);
         serviceRecyclerView.setAdapter(serviceAdapter);
+
+        bAdapter1 = new BAdapter1(this);
+        brv1 = findViewById(R.id.bp_brv_1);
+        brv1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        brv1.setAdapter(bAdapter1);
+
+        bAdapter2 = new BAdapter2(this);
+        brv2 = findViewById(R.id.bp_brv_2);
+        brv2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        brv2.setAdapter(bAdapter2);
     }
 
     private void setData() {
@@ -55,5 +74,7 @@ public class BPMainActivity extends AppCompatActivity {
         offersAdapter.addData(dummyDataProvider.getLandingOffersModels());
         eventAdapter.addData(dummyDataProvider.getEventModels());
         serviceAdapter.addData(dummyDataProvider.getServiceModels());
+        bAdapter1.addData(dummyDataProvider.getBusinessModels1());
+        bAdapter2.addData(dummyDataProvider.getBusinessModels1());
     }
 }

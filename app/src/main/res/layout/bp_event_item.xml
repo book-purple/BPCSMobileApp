@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/event_image"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:layout_centerHorizontal="true"
         android:scaleType="centerInside" />
 
@@ -23,7 +23,8 @@
         android:layout_below="@+id/event_image"
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
-        android:textSize="9dp"
+        android:textSize="10sp"
+        android:textColor="@color/black"
         android:singleLine="true"
         android:text="Event Name" />
 
