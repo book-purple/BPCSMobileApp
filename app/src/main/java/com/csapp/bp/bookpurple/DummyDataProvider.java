@@ -1,6 +1,7 @@
 package com.csapp.bp.bookpurple;
 
 import com.csapp.bp.bookpurple.model.EventModel;
+import com.csapp.bp.bookpurple.model.LandingOffersModel;
 import com.csapp.bp.bookpurple.model.ServiceModel;
 
 import java.util.ArrayList;
@@ -8,14 +9,22 @@ import java.util.List;
 
 public class DummyDataProvider {
 
+    private List<String> landingOfferBannerName;
+    private List<Integer> landingOfferColor;
+
     private List<String> serviceName;
     private List<Integer> servicesImages;
 
     private List<String> eventName;
     private List<Integer> eventImages;
 
+    private List<LandingOffersModel> landingOffersModels;
     private List<EventModel> eventModels;
     private List<ServiceModel> serviceModels;
+
+    public List<LandingOffersModel> getLandingOffersModels() {
+        return landingOffersModels;
+    }
 
     public List<EventModel> getEventModels() {
         return eventModels;
@@ -34,6 +43,11 @@ public class DummyDataProvider {
     }
 
     public DummyDataProvider() {
+
+        landingOfferBannerName = new ArrayList<>();
+        landingOfferColor = new ArrayList<>();
+        populateLandingBannerData();
+
         serviceName = new ArrayList<>();
         eventName = new ArrayList<>();
         populateServiceNames();
@@ -42,11 +56,22 @@ public class DummyDataProvider {
         eventImages = new ArrayList<>();
         populateImages();
 
+        landingOffersModels = new ArrayList<>();
         eventModels = new ArrayList<>();
         serviceModels = new ArrayList<>();
 
+        populateLandingOffersBanner();
         populateEventModels();
         populateServiceModels();
+    }
+
+    private void populateLandingOffersBanner() {
+        for (int i = 0; i < landingOfferBannerName.size(); i++) {
+            LandingOffersModel landingOffersModel = new LandingOffersModel();
+            landingOffersModel.text = landingOfferBannerName.get(i);
+            landingOffersModel.color = landingOfferColor.get(i);
+            landingOffersModels.add(landingOffersModel);
+        }
     }
 
     private void populateServiceModels() {
@@ -65,6 +90,18 @@ public class DummyDataProvider {
             eventModel.eventName = eventName.get(i);
             eventModels.add(eventModel);
         }
+    }
+
+    private void populateLandingBannerData () {
+        landingOfferBannerName.add("Banner1");
+        landingOfferBannerName.add("Banner2");
+        landingOfferBannerName.add("Banner3");
+        landingOfferBannerName.add("Banner4");
+
+        landingOfferColor.add(R.color.green);
+        landingOfferColor.add(R.color.blue);
+        landingOfferColor.add(R.color.red);
+        landingOfferColor.add(R.color.blue);
     }
 
     private void populateImages() {
