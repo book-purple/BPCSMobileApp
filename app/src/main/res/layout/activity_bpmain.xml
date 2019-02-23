@@ -35,26 +35,26 @@
                     android:layout_alignParentLeft="true">
 
                     <ImageView
+                        android:id="@+id/location_icon"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:id="@+id/location_icon"
-                        android:src="@drawable/location"/>
+                        android:src="@drawable/location" />
 
                     <TextView
                         android:id="@+id/bp_location_heading"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/location_icon"
                         android:text="Location"
                         android:textColor="@color/black"
-                        android:layout_toRightOf="@+id/location_icon"
                         android:textSize="8dp" />
 
                     <TextView
                         android:id="@+id/bp_location_area"
                         android:layout_width="match_parent"
-                        android:layout_toRightOf="@+id/location_icon"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/bp_location_heading"
+                        android:layout_toRightOf="@+id/location_icon"
                         android:text="JP Nagar, 3rd Phase"
                         android:textColor="@color/black"
                         android:textSize="12dp"
@@ -82,11 +82,11 @@
             </RelativeLayout>
 
             <View
+                android:id="@+id/divider1"
                 android:layout_width="match_parent"
                 android:layout_height="0.7dp"
-                android:background="@color/grey_light"
                 android:layout_below="@+id/bp_heading_layout"
-                android:id="@+id/divider1"/>
+                android:background="@color/grey_light" />
 
 
             <!--Offer Layout-->
@@ -163,6 +163,7 @@
                     android:layout_below="@+id/event_heading_text"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
+                    android:layout_marginTop="5dp"
                     android:overScrollMode="never"
                     android:visibility="visible" />
             </RelativeLayout>
@@ -202,6 +203,7 @@
                     android:layout_below="@+id/services_heading_text"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
+                    android:layout_marginTop="5dp"
                     android:overScrollMode="never"
                     android:visibility="visible" />
 

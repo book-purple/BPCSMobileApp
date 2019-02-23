@@ -160,7 +160,7 @@ public class DummyDataProvider {
         serviceName.add("Service 4");
         serviceName.add("Other Service");
 
-        eventName.add("Wedding &\nPre-Wedding");
+        eventName.add("Wedding");
         eventName.add("Birthday\nParty");
         eventName.add("Baby Shower");
         eventName.add("Bachelortte");
