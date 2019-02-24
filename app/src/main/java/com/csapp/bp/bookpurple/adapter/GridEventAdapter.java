@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.csapp.bp.bookpurple.R;
 import com.csapp.bp.bookpurple.model.EventModel;
+import com.csapp.bp.bookpurple.util.RxViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,18 +47,19 @@ public class GridEventAdapter extends RecyclerView.Adapter<GridEventAdapter.Grid
 
     public class GridListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private View view;
         private TextView name;
         private ImageView image;
 
         GridListViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.event_name);
-            image = itemView.findViewById(R.id.event_image);
+            this.view = itemView;
+            this.name = itemView.findViewById(R.id.event_name);
+            this.image = itemView.findViewById(R.id.event_image);
         }
 
         @Override
         public void onClick(View v) {
-
         }
 
         public void populate(EventModel eventModel) {

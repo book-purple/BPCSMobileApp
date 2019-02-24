@@ -11,8 +11,16 @@ import com.csapp.bp.bookpurple.adapter.BAdapter2;
 import com.csapp.bp.bookpurple.adapter.GridEventAdapter;
 import com.csapp.bp.bookpurple.adapter.GridServiceAdapter;
 import com.csapp.bp.bookpurple.adapter.OffersAdapter;
+import com.csapp.bp.bookpurple.logger.Logger;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 public class BPMainActivity extends AppCompatActivity {
+
+    private static final String TAG = BPMainActivity.class.getSimpleName();
+
+    private CompositeDisposable compositeDisposable;
 
     private RecyclerView offerRv;
     private OffersAdapter offersAdapter;
@@ -24,7 +32,7 @@ public class BPMainActivity extends AppCompatActivity {
     private GridLayoutManager gridServiceLayoutManager;
     private RecyclerView serviceRecyclerView;
 
-    /*Buiness Banners*/
+    /*Business Banners*/
     private RecyclerView brv1;
     private BAdapter1 bAdapter1;
 
@@ -67,6 +75,17 @@ public class BPMainActivity extends AppCompatActivity {
         brv2 = findViewById(R.id.bp_brv_2);
         brv2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         brv2.setAdapter(bAdapter2);
+
+        registerToAdapterObservables();
+    }
+
+    private void registerToAdapterObservables() {
+        Disposable eventClickSubscription = serviceAdapter.getServiceModelPublishSubject()
+                .subscribe(serviceModel -> {
+                    // start listing page from here
+                }, throwable -> Logger.log(TAG, throwable));
+
+        compositeDisposable.add(eventClickSubscription);
     }
 
     private void setData() {

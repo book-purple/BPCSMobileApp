@@ -29,4 +29,9 @@ task clean(type: Delete) {
 ext {
     // App dependencies
     supportLibraryVersion = '26.1.0'
+
+    // rx java versions
+    rxJavaVersion = '2.1.14'
+    rxAndroidVersion = '2.0.2'
+    rxBindingVersion = '2.1.1'
 }

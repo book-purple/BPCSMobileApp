@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import com.csapp.bp.bookpurple.R;
 import com.csapp.bp.bookpurple.model.ServiceModel;
+import com.csapp.bp.bookpurple.util.RxViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.subjects.PublishSubject;
 
 public class GridServiceAdapter extends RecyclerView.Adapter<GridServiceAdapter.GridListViewHolder> {
 
@@ -21,11 +24,16 @@ public class GridServiceAdapter extends RecyclerView.Adapter<GridServiceAdapter.
     }
 
     private List<ServiceModel> serviceModels = new ArrayList<>();
+    private PublishSubject<ServiceModel> serviceModelPublishSubject = PublishSubject.create();
 
     public void addData(List<ServiceModel> models) {
         serviceModels.clear();
         serviceModels.addAll(models);
         notifyDataSetChanged();
+    }
+
+    public PublishSubject<ServiceModel> getServiceModelPublishSubject () {
+        return serviceModelPublishSubject;
     }
 
     @Override
@@ -46,23 +54,27 @@ public class GridServiceAdapter extends RecyclerView.Adapter<GridServiceAdapter.
 
     public class GridListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private View view;
         private TextView name;
         private ImageView image;
 
         GridListViewHolder(View itemView) {
             super(itemView);
+            view = itemView;
             name = itemView.findViewById(R.id.service_name);
             image = itemView.findViewById(R.id.service_image);
         }
 
         @Override
         public void onClick(View v) {
-
         }
 
         public void populate(ServiceModel serviceModel) {
             name.setText(serviceModel.serviceName);
             image.setImageResource(serviceModel.serviceImage);
+
+            RxViewUtil.click(view)
+                    .subscribe(aVoid -> serviceModelPublishSubject.onNext(serviceModel), throwable -> {});
         }
     }
 }
