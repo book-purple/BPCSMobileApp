@@ -19,12 +19,12 @@ import io.reactivex.subjects.PublishSubject;
 
 public class GridServiceAdapter extends RecyclerView.Adapter<GridServiceAdapter.GridListViewHolder> {
 
-    public GridServiceAdapter(Context context) {
-
-    }
-
     private List<ServiceModel> serviceModels = new ArrayList<>();
-    private PublishSubject<ServiceModel> serviceModelPublishSubject = PublishSubject.create();
+    private PublishSubject<ServiceModel> serviceModelPublishSubject;
+
+    public GridServiceAdapter(Context context) {
+        this.serviceModelPublishSubject = PublishSubject.create();
+    }
 
     public void addData(List<ServiceModel> models) {
         serviceModels.clear();

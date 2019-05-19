@@ -16,9 +16,9 @@ import com.csapp.bp.bookpurple.logger.Logger;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-public class BPMainActivity extends AppCompatActivity {
+public class LandingActivity extends AppCompatActivity {
 
-    private static final String TAG = BPMainActivity.class.getSimpleName();
+    private static final String TAG = LandingActivity.class.getSimpleName();
 
     private CompositeDisposable compositeDisposable;
 
@@ -42,9 +42,14 @@ public class BPMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        injectDependencies();
         setContentView(R.layout.activity_bpmain);
         initView();
         setData();
+    }
+
+    private void injectDependencies() {
+        compositeDisposable = new CompositeDisposable();
     }
 
     private void initView() {
