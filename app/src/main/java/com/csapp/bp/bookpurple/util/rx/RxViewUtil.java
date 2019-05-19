@@ -1,4 +1,4 @@
-package com.csapp.bp.bookpurple.util;
+package com.csapp.bp.bookpurple.util.rx;
 
 import android.annotation.SuppressLint;
 import android.view.MotionEvent;

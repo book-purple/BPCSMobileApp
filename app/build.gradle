@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+def productionUrl = "\"https://bp.com/\""
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -8,6 +10,9 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "PRODUCTION_URL", productionUrl
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,25 +30,29 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    // Android Related Dependencies
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
     implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
     implementation "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVersion"
     implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
-    //Rx related dependencies
+    // Rx related Dependencies
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxJavaVersion"
     implementation "com.jakewharton.rxbinding2:rxbinding:$rootProject.ext.rxBindingVersion"
 
-    // RetroFit dependencies
+    // RetroFit Dependencies
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    compileOnly "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
 
-    //Dagger dependencies
+    // Dagger Dependencies
     implementation "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+
+    // Stetho Dependency
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

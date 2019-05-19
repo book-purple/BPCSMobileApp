@@ -1,4 +1,4 @@
-package com.csapp.bp.bookpurple.network;
+package com.csapp.bp.bookpurple.network.api;
 
 import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
 import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;

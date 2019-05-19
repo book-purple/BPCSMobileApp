@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.csapp.bp.bookpurple.R;
 import com.csapp.bp.bookpurple.model.EventModel;
-import com.csapp.bp.bookpurple.util.RxViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
