@@ -2,6 +2,8 @@ package com.csapp.bp.bookpurple.dagger.module;
 
 import com.csapp.bp.bookpurple.mvp.interactor.LandingPageInteractor;
 import com.csapp.bp.bookpurple.network.api.ServiceApi;
+import com.csapp.bp.bookpurple.util.rx.RxSchedulers;
+import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
 
 import javax.inject.Singleton;
 
@@ -18,5 +20,11 @@ public class MainModule {
     @Singleton
     public LandingPageInteractor getLandingPageInteractor(ServiceApi serviceApi) {
         return new LandingPageInteractor(serviceApi);
+    }
+
+    @Provides
+    @Singleton
+    public RxSchedulersAbstractBase provideRxSchedulers() {
+        return new RxSchedulers();
     }
 }

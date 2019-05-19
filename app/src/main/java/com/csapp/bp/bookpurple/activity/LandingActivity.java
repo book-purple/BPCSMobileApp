@@ -1,4 +1,4 @@
-package com.csapp.bp.bookpurple;
+package com.csapp.bp.bookpurple.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,21 +6,28 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.csapp.bp.bookpurple.DummyDataProvider;
+import com.csapp.bp.bookpurple.R;
 import com.csapp.bp.bookpurple.adapter.BAdapter1;
 import com.csapp.bp.bookpurple.adapter.BAdapter2;
 import com.csapp.bp.bookpurple.adapter.GridEventAdapter;
 import com.csapp.bp.bookpurple.adapter.GridServiceAdapter;
 import com.csapp.bp.bookpurple.adapter.OffersAdapter;
 import com.csapp.bp.bookpurple.logger.Logger;
+import com.csapp.bp.bookpurple.mvp.interfaces.LandingViewPresenterContract;
+import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
+import com.csapp.bp.bookpurple.mvp.presenter.LandingPagePresenter;
+import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
+import com.csapp.bp.bookpurple.util.rx.RxUtil;
+
+import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-public class LandingActivity extends AppCompatActivity {
+public class LandingActivity extends AppCompatActivity implements LandingViewPresenterContract.View {
 
     private static final String TAG = LandingActivity.class.getSimpleName();
-
-    private CompositeDisposable compositeDisposable;
 
     private RecyclerView offerRv;
     private OffersAdapter offersAdapter;
@@ -38,6 +45,19 @@ public class LandingActivity extends AppCompatActivity {
 
     private RecyclerView brv2;
     private BAdapter2 bAdapter2;
+
+    // Dagger related variables
+    @Inject
+    private RxUtil rxUtil;
+
+    @Inject
+    private RxSchedulersAbstractBase rxSchedulers;
+
+    // MVP Related Variables
+    private LandingPagePresenter presenter;
+
+    // Rx Related Variables
+    private CompositeDisposable compositeDisposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,5 +120,10 @@ public class LandingActivity extends AppCompatActivity {
         serviceAdapter.addData(dummyDataProvider.getServiceModels());
         bAdapter1.addData(dummyDataProvider.getBusinessModels1());
         bAdapter2.addData(dummyDataProvider.getBusinessModels1());
+    }
+
+    @Override
+    public void onLandingDataFetched(LandingPageResponseModel landingPageResponseModel) {
+
     }
 }
