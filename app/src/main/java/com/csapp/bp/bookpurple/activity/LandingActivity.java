@@ -13,8 +13,12 @@ import com.csapp.bp.bookpurple.adapter.BAdapter2;
 import com.csapp.bp.bookpurple.adapter.GridEventAdapter;
 import com.csapp.bp.bookpurple.adapter.GridServiceAdapter;
 import com.csapp.bp.bookpurple.adapter.OffersAdapter;
+import com.csapp.bp.bookpurple.dagger.component.ModuleComponent;
+import com.csapp.bp.bookpurple.dagger.provider.ComponentProvider;
 import com.csapp.bp.bookpurple.logger.Logger;
+import com.csapp.bp.bookpurple.mvp.interactor.LandingPageInteractor;
 import com.csapp.bp.bookpurple.mvp.interfaces.LandingViewPresenterContract;
+import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
 import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
 import com.csapp.bp.bookpurple.mvp.presenter.LandingPagePresenter;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
@@ -28,6 +32,8 @@ import io.reactivex.disposables.Disposable;
 public class LandingActivity extends AppCompatActivity implements LandingViewPresenterContract.View {
 
     private static final String TAG = LandingActivity.class.getSimpleName();
+
+    protected ModuleComponent component;
 
     private RecyclerView offerRv;
     private OffersAdapter offersAdapter;
@@ -48,10 +54,11 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
 
     // Dagger related variables
     @Inject
-    private RxUtil rxUtil;
-
+    public RxUtil rxUtil;
     @Inject
-    private RxSchedulersAbstractBase rxSchedulers;
+    public RxSchedulersAbstractBase rxSchedulers;
+    @Inject
+    public LandingPageInteractor interactor;
 
     // MVP Related Variables
     private LandingPagePresenter presenter;
@@ -66,13 +73,18 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
         setContentView(R.layout.activity_bpmain);
         initView();
         setData();
+        loadData();
     }
 
     private void injectDependencies() {
+        component = ComponentProvider.getComponent();
+        component.inject(this);
         compositeDisposable = new CompositeDisposable();
     }
 
     private void initView() {
+
+        createPresenter();
 
         offersAdapter = new OffersAdapter(this);
         offerRv = findViewById(R.id.offer_rv);
@@ -104,6 +116,13 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
         registerToAdapterObservables();
     }
 
+    private void createPresenter() {
+        presenter = new LandingPagePresenter(this,
+                interactor,
+                compositeDisposable,
+                rxSchedulers);
+    }
+
     private void registerToAdapterObservables() {
         Disposable eventClickSubscription = serviceAdapter.getServiceModelPublishSubject()
                 .subscribe(serviceModel -> {
@@ -125,5 +144,16 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
     @Override
     public void onLandingDataFetched(LandingPageResponseModel landingPageResponseModel) {
 
+    }
+
+    @Override
+    public void loadData() {
+        // todo: get location from user location service common util
+        presenter.getLandingData(new LandingPageRequestModel(0L, 0L));
+    }
+
+    @Override
+    public void dataFetchFailure(Throwable error) {
+        Logger.log(TAG, error);
     }
 }

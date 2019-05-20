@@ -2,7 +2,11 @@ package com.csapp.bp.bookpurple.mvp.presenter;
 
 import com.csapp.bp.bookpurple.mvp.interactor.LandingPageInteractor;
 import com.csapp.bp.bookpurple.mvp.interfaces.LandingViewPresenterContract;
-import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
+import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
+import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /*
  * Created by Gaurav Sharma on 2019-05-19.
@@ -10,9 +14,40 @@ import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
 public class LandingPagePresenter extends LandingViewPresenterContract.Presenter {
 
     private LandingPageInteractor interactor;
+    private CompositeDisposable compositeDisposable;
+    private RxSchedulersAbstractBase rxSchedulers;
 
+    public LandingPagePresenter(LandingViewPresenterContract.View view,
+                                LandingPageInteractor landingPageInteractor,
+                                CompositeDisposable compositeDisposable,
+                                RxSchedulersAbstractBase rxSchedulers) {
+        this.interactor = landingPageInteractor;
+        this.compositeDisposable = compositeDisposable;
+        this.rxSchedulers = rxSchedulers;
+    }
+
+    /**
+     * Function to get Landing Page Data from API
+     * @param landingPageRequestModel landingPageResponseModel
+     */
     @Override
-    public void getLandingData(LandingPageResponseModel landingPageResponseModel) {
-
+    public void getLandingData(LandingPageRequestModel landingPageRequestModel) {
+        Disposable subscription = interactor.getLandingPageDate(landingPageRequestModel)
+                .subscribeOn(rxSchedulers.getIOScheduler())
+                .observeOn(rxSchedulers.getMainThreadScheduler())
+                .subscribe(landingPageResponseModel -> {
+                    if (isViewAttached()) {
+                        if (null == landingPageRequestModel) {
+                            getView().onLandingDataFetched(landingPageResponseModel);
+                        } else {
+                            getView().dataFetchFailure(new Throwable("Invalid Response"));
+                        }
+                    }
+                }, error -> {
+                    if (isViewAttached()) {
+                        getView().dataFetchFailure(error);
+                    }
+                });
+        compositeDisposable.add(subscription);
     }
 }

@@ -39,6 +39,9 @@ public class NetworkModule {
         return wrapper.getRetrofit();
     }
 
+    @Named("serviceApi")
+    @Provides
+    @Singleton
     public ServiceApi provideServiceApi(@Named("baseRetrofit") Retrofit retrofit) {
         return retrofit.create(ServiceApi.class);
     }

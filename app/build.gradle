@@ -44,7 +44,7 @@ dependencies {
 
     // RetroFit Dependencies
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    compileOnly "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
 
     // Dagger Dependencies

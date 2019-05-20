@@ -2,6 +2,8 @@ package com.csapp.bp.bookpurple;
 
 import android.content.Context;
 
+import com.facebook.stetho.Stetho;
+
 /*
  * Created by gauravsharma on 2019-05-19.
  */
@@ -30,5 +32,9 @@ public final class InternalApplication {
 
     public Context getApplicationContext() {
         return application;
+    }
+
+    public void initFlow() {
+        Stetho.initializeWithDefaults(application);
     }
 }
