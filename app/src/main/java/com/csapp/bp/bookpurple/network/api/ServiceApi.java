@@ -4,6 +4,7 @@ import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
 import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
 
 import io.reactivex.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 /*
@@ -13,5 +14,5 @@ import retrofit2.http.POST;
 public interface ServiceApi {
 
     @POST("/catalog/v1/landing")
-    Observable<LandingPageResponseModel> getLandingData(LandingPageRequestModel landingPageRequestModel);
+    Observable<LandingPageResponseModel> getLandingData(@Body LandingPageRequestModel landingPageRequestModel);
 }

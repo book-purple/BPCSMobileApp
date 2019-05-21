@@ -143,7 +143,7 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
 
     @Override
     public void onLandingDataFetched(LandingPageResponseModel landingPageResponseModel) {
-
+        // todo: implement this function to populate UI
     }
 
     @Override
