@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.csapp.bp.bookpurple.DummyDataProvider;
 import com.csapp.bp.bookpurple.R;
@@ -23,6 +25,7 @@ import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
 import com.csapp.bp.bookpurple.mvp.presenter.LandingPagePresenter;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
 import com.csapp.bp.bookpurple.util.rx.RxUtil;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import javax.inject.Inject;
 
@@ -44,6 +47,9 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
     private RecyclerView eventRecyclerView;
     private GridLayoutManager gridServiceLayoutManager;
     private RecyclerView serviceRecyclerView;
+
+    private RelativeLayout contentLayout;
+    private ShimmerFrameLayout landingShimmerLayout;
 
     /*Business Banners*/
     private RecyclerView brv1;
@@ -86,6 +92,8 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
 
         createPresenter();
 
+        contentLayout = findViewById(R.id.content_layout);
+
         offersAdapter = new OffersAdapter(this);
         offerRv = findViewById(R.id.offer_rv);
         offerRv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -102,6 +110,9 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
         gridServiceLayoutManager = new GridLayoutManager(this, 3);
         serviceRecyclerView.setLayoutManager(gridServiceLayoutManager);
         serviceRecyclerView.setAdapter(serviceAdapter);
+
+        // Set Shimmer Animation
+        landingShimmerLayout = findViewById(R.id.landing_shimmer_layout);
 
         bAdapter1 = new BAdapter1(this);
         brv1 = findViewById(R.id.bp_brv_1);
@@ -162,6 +173,7 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
      */
     @Override
     public void onLandingDataFetched(LandingPageResponseModel landingPageResponseModel) {
+        stopShimmerAnimation();
         // fill event grid details
         eventAdapter.addData(landingPageResponseModel.landingGridDto.eventGrid.eventTileList);
         // fill service grid details
@@ -170,8 +182,20 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
 
     @Override
     public void loadData() {
+        startShimmerAnimation();
         // todo: get location from user location service common util
         presenter.getLandingData(new LandingPageRequestModel(0L, 0L));
+    }
+
+    private void startShimmerAnimation() {
+        contentLayout.setVisibility(View.GONE);
+        landingShimmerLayout.startShimmer();
+    }
+
+    private void stopShimmerAnimation() {
+        contentLayout.setVisibility(View.VISIBLE);
+        landingShimmerLayout.setVisibility(View.GONE);
+        landingShimmerLayout.stopShimmer();
     }
 
     @Override

@@ -12,4 +12,5 @@
     <color name="grey_drak">#484848</color>
     <color name="grey_light">#dcdcdc</color>
     <color name="background_gray">#ecebeb</color>
+    <color name="background">#dddddd</color>
 </resources>

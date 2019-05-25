@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -88,136 +89,164 @@
                 android:layout_below="@+id/bp_heading_layout"
                 android:background="@color/grey_light" />
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/landing_shimmer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/bp_heading_layout"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/landing_shimmer_anim_layout" />
+
+                    <include layout="@layout/landing_shimmer_anim_layout" />
+
+                    <include layout="@layout/landing_shimmer_anim_layout" />
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <!--Offer Layout-->
 
             <RelativeLayout
-                android:id="@+id/offer_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/divider1"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="10dp">
+                android:id="@+id/content_layout"
+                android:layout_below="@+id/divider1">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/offer_rv"
+                <RelativeLayout
+                    android:id="@+id/offer_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:overScrollMode="never" />
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="10dp">
 
-            </RelativeLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/offer_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:overScrollMode="never" />
 
-            <!--Search Layout-->
-            <RelativeLayout
-                android:id="@+id/search_rl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/offer_layout"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/search_bg_layout"
-                android:padding="10dp">
+                </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/search_bac_text"
+                <!--Search Layout-->
+                <RelativeLayout
+                    android:id="@+id/search_rl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Search for events, services ..."
-                    android:textColor="@color/grey_drak"
-                    android:textSize="10dp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/event_rl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/search_rl"
-                android:background="@color/white">
-
-                <ImageView
-                    android:id="@+id/event_iv_1"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_below="@+id/offer_layout"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/offer" />
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/search_bg_layout"
+                    android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/event_heading_text"
+                    <TextView
+                        android:id="@+id/search_bac_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Search for events, services ..."
+                        android:textColor="@color/grey_drak"
+                        android:textSize="10dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/event_rl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_toRightOf="@+id/event_iv_1"
-                    android:text="What's the occasion ?"
-                    android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
+                    android:layout_below="@+id/search_rl"
+                    android:background="@color/white">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/event_rv"
+                    <ImageView
+                        android:id="@+id/event_iv_1"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/offer" />
+
+                    <TextView
+                        android:id="@+id/event_heading_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_toRightOf="@+id/event_iv_1"
+                        android:text="What's the occasion ?"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/event_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/event_heading_text"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="5dp"
+                        android:overScrollMode="never"
+                        android:visibility="visible" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/service_rl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/event_heading_text"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="5dp"
-                    android:overScrollMode="never"
-                    android:visibility="visible" />
+                    android:layout_below="@+id/event_rl"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white">
+
+                    <ImageView
+                        android:id="@+id/service_iv_1"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/tick" />
+
+                    <TextView
+                        android:id="@+id/services_heading_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_toRightOf="@+id/service_iv_1"
+                        android:text="Services"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/service_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/services_heading_text"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="5dp"
+                        android:overScrollMode="never"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+                <!--Business layouts-->
+                <include
+                    android:id="@+id/buiness_layouts"
+                    layout="@layout/business_layouts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/service_rl"
+                    android:layout_marginTop="10dp" />
+
             </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/service_rl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/event_rl"
-                android:layout_marginTop="20dp"
-                android:background="@color/white">
-
-                <ImageView
-                    android:id="@+id/service_iv_1"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/tick" />
-
-                <TextView
-                    android:id="@+id/services_heading_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_toRightOf="@+id/service_iv_1"
-                    android:text="Services"
-                    android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/service_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/services_heading_text"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="5dp"
-                    android:overScrollMode="never"
-                    android:visibility="visible" />
-
-            </RelativeLayout>
-
-            <!--Business layouts-->
-            <include
-                android:id="@+id/buiness_layouts"
-                layout="@layout/business_layouts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/service_rl"
-                android:layout_marginTop="10dp" />
-
 
         </RelativeLayout>
 
