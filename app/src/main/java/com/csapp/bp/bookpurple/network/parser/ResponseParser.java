@@ -8,7 +8,7 @@ import java.util.List;
 
 /*
  * Class to hold gson parser and type adapter factory related logic
- * Created by gauravsharma on 2019-05-19.
+ * Written by gauravsharma on 2019-05-19.
  */
 public class ResponseParser {
 

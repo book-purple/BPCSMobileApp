@@ -5,7 +5,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.SingleTransformer;
 
 /*
- * Created by Gaurav Sharma on 2019-05-19.
+ * Written by Gaurav Sharma on 2019-05-19.
  */
 public abstract class RxSchedulersAbstractBase {
 

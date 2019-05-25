@@ -93,13 +93,13 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
 
         eventRecyclerView = findViewById(R.id.event_rv);
         eventAdapter = new GridEventAdapter(this);
-        gridEventLayoutManager = new GridLayoutManager(this, 4);
+        gridEventLayoutManager = new GridLayoutManager(this, 3);
         eventRecyclerView.setLayoutManager(gridEventLayoutManager);
         eventRecyclerView.setAdapter(eventAdapter);
 
         serviceRecyclerView = findViewById(R.id.service_rv);
         serviceAdapter = new GridServiceAdapter(this);
-        gridServiceLayoutManager = new GridLayoutManager(this, 4);
+        gridServiceLayoutManager = new GridLayoutManager(this, 3);
         serviceRecyclerView.setLayoutManager(gridServiceLayoutManager);
         serviceRecyclerView.setAdapter(serviceAdapter);
 
@@ -116,6 +116,9 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
         registerToAdapterObservables();
     }
 
+    /**
+     * Function to initialize presenter
+     */
     private void createPresenter() {
         presenter = new LandingPagePresenter(this,
                 interactor,
@@ -123,27 +126,46 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
                 rxSchedulers);
     }
 
+    /**
+     * Function to register Adapter Observables
+     */
     private void registerToAdapterObservables() {
-        Disposable eventClickSubscription = serviceAdapter.getServiceModelPublishSubject()
-                .subscribe(serviceModel -> {
-                    // start listing page from here
-                }, throwable -> Logger.log(TAG, throwable));
+
+        // subscribe to event grid click
+        Disposable eventClickSubscription = eventAdapter.getEventTilePublishSubject()
+                .subscribe(event -> {
+                    Logger.log(event.name);
+                },throwable -> Logger.logException(TAG, throwable));
 
         compositeDisposable.add(eventClickSubscription);
+
+        // subscribe to service grid click
+        Disposable serviceClickSubscription = serviceAdapter.getServiceModelPublishSubject()
+                .subscribe(service -> {
+                    Logger.log(service.name);
+                }, throwable -> Logger.logException(TAG, throwable));
+
+        compositeDisposable.add(serviceClickSubscription);
     }
 
     private void setData() {
+        // function to fill rest with dummy details
         DummyDataProvider dummyDataProvider = new DummyDataProvider();
         offersAdapter.addData(dummyDataProvider.getLandingOffersModels());
-        eventAdapter.addData(dummyDataProvider.getEventModels());
-        serviceAdapter.addData(dummyDataProvider.getServiceModels());
         bAdapter1.addData(dummyDataProvider.getBusinessModels1());
         bAdapter2.addData(dummyDataProvider.getBusinessModels1());
     }
 
+    /**
+     * Function to provide Data from API to activity
+     * @param landingPageResponseModel landingPageResponseModel
+     */
     @Override
     public void onLandingDataFetched(LandingPageResponseModel landingPageResponseModel) {
-        // todo: implement this function to populate UI
+        // fill event grid details
+        eventAdapter.addData(landingPageResponseModel.landingGridDto.eventGrid.eventTileList);
+        // fill service grid details
+        serviceAdapter.addData(landingPageResponseModel.landingGridDto.serviceGrid.serviceTileList);
     }
 
     @Override

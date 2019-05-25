@@ -4,7 +4,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
 /*
- * Created by Gaurav Sharma on 2019-05-19.
+ * Written by Gaurav Sharma on 2019-05-19.
  */
 public class RxSchedulersTest extends RxSchedulersAbstractBase {
 

@@ -3,7 +3,7 @@ package com.csapp.bp.bookpurple.dagger.component;
 import com.csapp.bp.bookpurple.activity.LandingActivity;
 
 /*
- * Created by Gaurav Sharma on 2019-05-19.
+ * Written by Gaurav Sharma on 2019-05-19.
  */
 public interface ModuleComponent {
 

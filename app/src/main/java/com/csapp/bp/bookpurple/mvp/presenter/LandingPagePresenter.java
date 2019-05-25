@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 /*
- * Created by Gaurav Sharma on 2019-05-19.
+ * Written by Gaurav Sharma on 2019-05-19.
  */
 public class LandingPagePresenter extends LandingViewPresenterContract.Presenter {
 
@@ -21,6 +21,7 @@ public class LandingPagePresenter extends LandingViewPresenterContract.Presenter
                                 LandingPageInteractor landingPageInteractor,
                                 CompositeDisposable compositeDisposable,
                                 RxSchedulersAbstractBase rxSchedulers) {
+        attachView(view);
         this.interactor = landingPageInteractor;
         this.compositeDisposable = compositeDisposable;
         this.rxSchedulers = rxSchedulers;
@@ -37,7 +38,7 @@ public class LandingPagePresenter extends LandingViewPresenterContract.Presenter
                 .observeOn(rxSchedulers.getMainThreadScheduler())
                 .subscribe(landingPageResponseModel -> {
                     if (isViewAttached()) {
-                        if (null == landingPageRequestModel) {
+                        if (null != landingPageRequestModel) {
                             getView().onLandingDataFetched(landingPageResponseModel);
                         } else {
                             getView().dataFetchFailure(new Throwable("Invalid Response"));

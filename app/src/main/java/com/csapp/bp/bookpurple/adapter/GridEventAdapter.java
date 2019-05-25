@@ -8,24 +8,41 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.csapp.bp.bookpurple.DummyDataProvider;
 import com.csapp.bp.bookpurple.R;
+import com.csapp.bp.bookpurple.logger.Logger;
 import com.csapp.bp.bookpurple.model.EventModel;
+import com.csapp.bp.bookpurple.mvp.model.EventTile;
+import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
+import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
+import com.csapp.bp.bookpurple.util.rx.RxViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.subjects.PublishSubject;
+
 public class GridEventAdapter extends RecyclerView.Adapter<GridEventAdapter.GridListViewHolder> {
 
-    private List<EventModel> eventModels = new ArrayList<>();
+    public static final String TAG = GridEventAdapter.class.getName();
+
+    private List<EventTile> eventTiles;
+    private PublishSubject<EventTile> eventTilePublishSubject;
+    private DummyDataProvider dummyDataProvider;
 
     public GridEventAdapter(Context context) {
-
+        this.eventTiles = new ArrayList<>();
+        this.eventTilePublishSubject = PublishSubject.create();
+        this.dummyDataProvider = new DummyDataProvider();
     }
 
-    public void addData(List<EventModel> models) {
-        eventModels.clear();
-        eventModels.addAll(models);
+    public void addData(List<EventTile> eventTiles) {
+        this.eventTiles.addAll(eventTiles);
         notifyDataSetChanged();
+    }
+
+    public PublishSubject<EventTile> getEventTilePublishSubject() {
+        return eventTilePublishSubject;
     }
 
     @Override
@@ -36,12 +53,12 @@ public class GridEventAdapter extends RecyclerView.Adapter<GridEventAdapter.Grid
 
     @Override
     public void onBindViewHolder(GridListViewHolder holder, int position) {
-        holder.populate(eventModels.get(position));
+        holder.populate(eventTiles.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return eventModels.size();
+        return eventTiles.size();
     }
 
     public class GridListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -61,9 +78,15 @@ public class GridEventAdapter extends RecyclerView.Adapter<GridEventAdapter.Grid
         public void onClick(View v) {
         }
 
-        public void populate(EventModel eventModel) {
-            name.setText(eventModel.eventName);
-            image.setImageResource(eventModel.eventImage);
+        public void populate(EventTile event) {
+            name.setText(event.name);
+            image.setImageResource(dummyDataProvider.getDummyImageResource());
+
+            RxViewUtil.click(view)
+                    .subscribe(avoid -> eventTilePublishSubject.onNext(event),
+                            throwable -> {
+                                Logger.logException(TAG, throwable);
+                            });
         }
     }
 }

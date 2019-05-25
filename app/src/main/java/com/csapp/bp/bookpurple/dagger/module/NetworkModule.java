@@ -16,7 +16,7 @@ import dagger.Provides;
 import retrofit2.Retrofit;
 
 /*
- * Created by gauravsharma on 2019-05-19.
+ * Written by gauravsharma on 2019-05-19.
  */
 @Module
 public class NetworkModule {

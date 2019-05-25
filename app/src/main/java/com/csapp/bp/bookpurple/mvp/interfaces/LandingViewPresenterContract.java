@@ -2,10 +2,10 @@ package com.csapp.bp.bookpurple.mvp.interfaces;
 
 import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
 import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
-import com.csapp.bp.bookpurple.mvp.presenter.BasePresenter;
+import com.csapp.bp.bookpurple.mvp.core.MvpBasePresenter;
 
 /*
- * Created by gauravsharma on 2019-05-19.
+ * Written by gauravsharma on 2019-05-19.
  */
 public interface LandingViewPresenterContract {
 
@@ -25,7 +25,7 @@ public interface LandingViewPresenterContract {
         void dataFetchFailure(Throwable error);
     }
 
-    abstract class Presenter extends BasePresenter<LandingViewPresenterContract.View> {
+    abstract class Presenter extends MvpBasePresenter<View> {
 
         /**
          * Function to fetch Landing Page Data

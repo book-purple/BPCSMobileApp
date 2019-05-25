@@ -7,7 +7,7 @@ import com.csapp.bp.bookpurple.network.api.ServiceApi;
 import io.reactivex.Observable;
 
 /*
- * Created by gauravsharma on 2019-05-19.
+ * Written by gauravsharma on 2019-05-19.
  */
 public class LandingPageInteractor {
 

@@ -7,6 +7,7 @@ import com.csapp.bp.bookpurple.model.ServiceModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class DummyDataProvider {
 
@@ -168,5 +169,15 @@ public class DummyDataProvider {
         eventName.add("Engagement");
         eventName.add("Cocktail Party");
         eventName.add("Other Events");
+    }
+
+    public int getDummyImageResource() {
+        return servicesImages.get(getRandomNumber());
+    }
+
+    public int getRandomNumber() {
+        int max = 9;
+        int min = 0;
+        return (int)(Math.random() * ((max - min) + 1)) + min;
     }
 }

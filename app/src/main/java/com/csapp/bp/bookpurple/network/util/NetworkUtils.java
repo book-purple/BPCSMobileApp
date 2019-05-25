@@ -10,7 +10,7 @@ import okhttp3.CertificatePinner;
 import okhttp3.Headers;
 
 /*
- * Created by gauravsharma on 2019-05-19.
+ * Written by gauravsharma on 2019-05-19.
  */
 public class NetworkUtils {
 

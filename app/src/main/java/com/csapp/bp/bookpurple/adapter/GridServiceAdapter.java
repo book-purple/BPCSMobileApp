@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.csapp.bp.bookpurple.DummyDataProvider;
 import com.csapp.bp.bookpurple.R;
 import com.csapp.bp.bookpurple.model.ServiceModel;
+import com.csapp.bp.bookpurple.mvp.model.ServiceTile;
 import com.csapp.bp.bookpurple.util.rx.RxViewUtil;
 
 import java.util.ArrayList;
@@ -19,20 +21,22 @@ import io.reactivex.subjects.PublishSubject;
 
 public class GridServiceAdapter extends RecyclerView.Adapter<GridServiceAdapter.GridListViewHolder> {
 
-    private List<ServiceModel> serviceModels = new ArrayList<>();
-    private PublishSubject<ServiceModel> serviceModelPublishSubject;
+    private List<ServiceTile> serviceTiles;
+    private PublishSubject<ServiceTile> serviceModelPublishSubject;
+    private DummyDataProvider dummyDataProvider;
 
     public GridServiceAdapter(Context context) {
+        this.serviceTiles = new ArrayList<>();
         this.serviceModelPublishSubject = PublishSubject.create();
+        this.dummyDataProvider = new DummyDataProvider();
     }
 
-    public void addData(List<ServiceModel> models) {
-        serviceModels.clear();
-        serviceModels.addAll(models);
+    public void addData(List<ServiceTile> serviceTiles) {
+        this.serviceTiles.addAll(serviceTiles);
         notifyDataSetChanged();
     }
 
-    public PublishSubject<ServiceModel> getServiceModelPublishSubject () {
+    public PublishSubject<ServiceTile> getServiceModelPublishSubject() {
         return serviceModelPublishSubject;
     }
 
@@ -44,12 +48,12 @@ public class GridServiceAdapter extends RecyclerView.Adapter<GridServiceAdapter.
 
     @Override
     public void onBindViewHolder(GridServiceAdapter.GridListViewHolder holder, int position) {
-        holder.populate(serviceModels.get(position));
+        holder.populate(serviceTiles.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return serviceModels.size();
+        return serviceTiles.size();
     }
 
     public class GridListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -69,12 +73,13 @@ public class GridServiceAdapter extends RecyclerView.Adapter<GridServiceAdapter.
         public void onClick(View v) {
         }
 
-        public void populate(ServiceModel serviceModel) {
-            name.setText(serviceModel.serviceName);
-            image.setImageResource(serviceModel.serviceImage);
+        public void populate(ServiceTile service) {
+            name.setText(service.name);
+            image.setImageResource(dummyDataProvider.getDummyImageResource());
 
             RxViewUtil.click(view)
-                    .subscribe(aVoid -> serviceModelPublishSubject.onNext(serviceModel), throwable -> {});
+                    .subscribe(aVoid -> serviceModelPublishSubject.onNext(service), throwable -> {
+                    });
         }
     }
 }

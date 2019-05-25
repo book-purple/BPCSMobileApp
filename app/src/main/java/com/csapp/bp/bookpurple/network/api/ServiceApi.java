@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 /*
  * Retrofit API interface to hold all the URLs related to Service API
- * Created by gauravsharma on 2019-05-19.
+ * Written by gauravsharma on 2019-05-19.
  */
 public interface ServiceApi {
 

@@ -5,7 +5,7 @@ import android.util.Log;
 import com.csapp.bp.bookpurple.BuildConfig;
 
 /*
- * Created by gauravsharma on 2019-05-19.
+ * Written by gauravsharma on 2019-05-19.
  */
 public class Logger {
 

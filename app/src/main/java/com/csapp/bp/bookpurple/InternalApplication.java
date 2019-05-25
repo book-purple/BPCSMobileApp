@@ -5,7 +5,7 @@ import android.content.Context;
 import com.facebook.stetho.Stetho;
 
 /*
- * Created by gauravsharma on 2019-05-19.
+ * Written by gauravsharma on 2019-05-19.
  */
 public final class InternalApplication {
 

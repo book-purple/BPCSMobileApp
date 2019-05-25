@@ -15,7 +15,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
- * Created by gauravsharma on 2/24/19.
+ * Written by gauravsharma on 2/24/19.
  **/
 public class RxViewUtil {
 

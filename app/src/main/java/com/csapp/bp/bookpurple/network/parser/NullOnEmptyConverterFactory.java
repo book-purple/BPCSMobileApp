@@ -9,7 +9,7 @@ import retrofit2.Retrofit;
 
 /*
  * Converter factory for handling null response
- * Created by gauravsharma on 2019-05-19.
+ * Written by gauravsharma on 2019-05-19.
  */
 public class NullOnEmptyConverterFactory extends Converter.Factory {
 
