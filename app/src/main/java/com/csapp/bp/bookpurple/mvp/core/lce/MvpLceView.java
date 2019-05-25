@@ -17,9 +17,11 @@ public interface MvpLceView<T> extends MvpView {
     View getLoadingView();
 
     @UiThread
-    void loadStart();
+    void onLoadStart();
     @UiThread
     void onNoContent();
+    @UiThread
+    void setCachedContent(T t);
     @UiThread
     void setContent(T t);
     @UiThread
