@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:id="@+id/bottom_menu_layout"
-    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="15dp"
+    android:layout_alignParentBottom="true"
     android:layout_margin="5dp"
-    android:divider="@android:color/transparent"
-    android:dividerHeight="0.0px"
-    android:clipToPadding="false"
     android:background="@drawable/bottom_menu_layout_style"
     android:clipChildren="false"
+    android:clipToPadding="false"
+    android:divider="@android:color/transparent"
+    android:dividerHeight="0.0px"
+    android:elevation="15dp"
     card_view:cardElevation="15dp"
     card_view:cardPreventCornerOverlap="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:weightSum="4"
-        android:baselineAligned="false">
+        android:weightSum="4">
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_weight="1">
+            android:paddingBottom="10dp">
 
             <ImageView
                 android:id="@+id/bg_menu_img_1"
@@ -43,17 +42,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bg_menu_img_1"
                 android:layout_centerHorizontal="true"
-                android:textSize="10dp"
-                android:text="Option1" />
+                android:text="Option1"
+                android:textSize="10dp" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_weight="1">
+            android:paddingBottom="10dp">
 
             <ImageView
                 android:id="@+id/bg_menu_img_2"
@@ -68,17 +67,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bg_menu_img_2"
                 android:layout_centerHorizontal="true"
-                android:textSize="10dp"
-                android:text="Option2" />
+                android:text="Option2"
+                android:textSize="10dp" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_weight="1">
+            android:paddingBottom="10dp">
 
             <ImageView
                 android:id="@+id/bg_menu_img_3"
@@ -93,17 +92,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bg_menu_img_3"
                 android:layout_centerHorizontal="true"
-                android:textSize="10dp"
-                android:text="Option3" />
+                android:text="Option3"
+                android:textSize="10dp" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_weight="1">
+            android:paddingBottom="10dp">
 
             <ImageView
                 android:id="@+id/bg_menu_img_4"
@@ -118,8 +117,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bg_menu_img_4"
                 android:layout_centerHorizontal="true"
-                android:textSize="10dp"
-                android:text="Option4" />
+                android:text="Option4"
+                android:textSize="10dp" />
 
         </RelativeLayout>
 

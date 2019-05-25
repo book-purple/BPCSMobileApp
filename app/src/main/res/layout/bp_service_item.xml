@@ -5,9 +5,9 @@
     android:background="@drawable/grid_border"
     android:orientation="vertical"
     android:paddingLeft="8dp"
-    android:paddingTop="10dp"
+    android:paddingTop="20dp"
     android:paddingRight="8dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="20dp">
 
     <ImageView
         android:id="@+id/service_image"
@@ -26,6 +26,6 @@
         android:singleLine="true"
         android:text="Event Name"
         android:textColor="@color/black"
-        android:textSize="10sp" />
+        android:textSize="12sp" />
 
 </RelativeLayout>
