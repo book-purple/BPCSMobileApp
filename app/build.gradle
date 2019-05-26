@@ -45,6 +45,9 @@ dependencies {
     // Shimmer Animation Dependency
     implementation 'com.facebook.shimmer:shimmer:0.4.0'
 
+    implementation 'org.parceler:parceler-api:1.1.10'
+    annotationProcessor "org.parceler:parceler:1.1.10"
+
     // RetroFit Dependencies
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"

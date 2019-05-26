@@ -1,4 +1,4 @@
-package com.csapp.bp.bookpurple.mvp.model;
+package com.csapp.bp.bookpurple.mvp.model.grid;
 
 import com.google.gson.annotations.SerializedName;
 

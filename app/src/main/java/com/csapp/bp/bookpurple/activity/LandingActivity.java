@@ -1,5 +1,6 @@
 package com.csapp.bp.bookpurple.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,17 +16,22 @@ import com.csapp.bp.bookpurple.adapter.BAdapter2;
 import com.csapp.bp.bookpurple.adapter.GridEventAdapter;
 import com.csapp.bp.bookpurple.adapter.GridServiceAdapter;
 import com.csapp.bp.bookpurple.adapter.OffersAdapter;
+import com.csapp.bp.bookpurple.constant.Constant;
 import com.csapp.bp.bookpurple.dagger.component.ModuleComponent;
 import com.csapp.bp.bookpurple.dagger.provider.ComponentProvider;
 import com.csapp.bp.bookpurple.logger.Logger;
 import com.csapp.bp.bookpurple.mvp.interactor.LandingPageInteractor;
 import com.csapp.bp.bookpurple.mvp.interfaces.LandingViewPresenterContract;
-import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
-import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
+import com.csapp.bp.bookpurple.mvp.model.grid.Tile;
+import com.csapp.bp.bookpurple.mvp.model.request.LandingPageRequestModel;
+import com.csapp.bp.bookpurple.mvp.model.request.ListingRequestModel;
+import com.csapp.bp.bookpurple.mvp.model.response.LandingPageResponseModel;
 import com.csapp.bp.bookpurple.mvp.presenter.LandingPagePresenter;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
 import com.csapp.bp.bookpurple.util.rx.RxUtil;
 import com.facebook.shimmer.ShimmerFrameLayout;
+
+import org.parceler.Parcels;
 
 import javax.inject.Inject;
 
@@ -86,11 +92,10 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
         component = ComponentProvider.getComponent();
         component.inject(this);
         compositeDisposable = new CompositeDisposable();
+        createPresenter();
     }
 
     private void initView() {
-
-        createPresenter();
 
         contentLayout = findViewById(R.id.content_layout);
 
@@ -146,6 +151,7 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
         Disposable eventClickSubscription = eventAdapter.getEventTilePublishSubject()
                 .subscribe(event -> {
                     Logger.log(event.name);
+                    startListingActivity(event);
                 },throwable -> Logger.logException(TAG, throwable));
 
         compositeDisposable.add(eventClickSubscription);
@@ -154,9 +160,18 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
         Disposable serviceClickSubscription = serviceAdapter.getServiceModelPublishSubject()
                 .subscribe(service -> {
                     Logger.log(service.name);
+                    startListingActivity(service);
                 }, throwable -> Logger.logException(TAG, throwable));
 
         compositeDisposable.add(serviceClickSubscription);
+    }
+
+    private void startListingActivity(Tile tile) {
+        Intent intent = new Intent(getApplicationContext(), ListingActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(Constant.ParcelConstant.LISTING_REQUEST_MODEL, Parcels.wrap(tile));
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     private void setData() {

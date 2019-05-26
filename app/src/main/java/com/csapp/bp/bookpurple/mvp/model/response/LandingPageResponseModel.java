@@ -1,8 +1,7 @@
-package com.csapp.bp.bookpurple.mvp.model;
+package com.csapp.bp.bookpurple.mvp.model.response;
 
+import com.csapp.bp.bookpurple.mvp.model.grid.LandingGridDto;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 /*
  * API response to contain Landing Page data

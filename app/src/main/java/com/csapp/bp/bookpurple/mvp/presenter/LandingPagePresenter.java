@@ -2,7 +2,8 @@ package com.csapp.bp.bookpurple.mvp.presenter;
 
 import com.csapp.bp.bookpurple.mvp.interactor.LandingPageInteractor;
 import com.csapp.bp.bookpurple.mvp.interfaces.LandingViewPresenterContract;
-import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
+import com.csapp.bp.bookpurple.mvp.model.request.LandingPageRequestModel;
+import com.csapp.bp.bookpurple.mvp.model.response.LandingPageResponseModel;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -38,7 +39,7 @@ public class LandingPagePresenter extends LandingViewPresenterContract.Presenter
                 .observeOn(rxSchedulers.getMainThreadScheduler())
                 .subscribe(landingPageResponseModel -> {
                     if (isViewAttached()) {
-                        if (null != landingPageRequestModel) {
+                        if (!isNoContent(landingPageResponseModel)) {
                             getView().onLandingDataFetched(landingPageResponseModel);
                         } else {
                             getView().dataFetchFailure(new Throwable("Invalid Response"));
@@ -50,5 +51,10 @@ public class LandingPagePresenter extends LandingViewPresenterContract.Presenter
                     }
                 });
         compositeDisposable.add(subscription);
+    }
+
+    @Override
+    public boolean isNoContent(LandingPageResponseModel landingPageResponseModel) {
+        return null == landingPageResponseModel;
     }
 }

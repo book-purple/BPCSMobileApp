@@ -1,10 +1,13 @@
-package com.csapp.bp.bookpurple.mvp.model;
+package com.csapp.bp.bookpurple.mvp.model.grid;
 
 import com.google.gson.annotations.SerializedName;
+
+import org.parceler.Parcel;
 
 /*
  * Written by Gaurav Sharma on 2019-05-22.
  */
+@Parcel()
 public abstract class Tile {
     @SerializedName("id")
     public String id;

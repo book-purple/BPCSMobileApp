@@ -1,9 +1,8 @@
 package com.csapp.bp.bookpurple.mvp.interfaces;
 
 import com.csapp.bp.bookpurple.mvp.core.MvpBasePresenterV2;
-import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
-import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
-import com.csapp.bp.bookpurple.mvp.core.MvpBasePresenter;
+import com.csapp.bp.bookpurple.mvp.model.request.LandingPageRequestModel;
+import com.csapp.bp.bookpurple.mvp.model.response.LandingPageResponseModel;
 
 /*
  * Written by gauravsharma on 2019-05-19.
@@ -35,5 +34,7 @@ public interface LandingViewPresenterContract {
          * @param landingPageRequestModel landingPageResponseModel
          */
         public abstract void getLandingData(LandingPageRequestModel landingPageRequestModel);
+
+        public abstract boolean isNoContent(LandingPageResponseModel landingPageResponseModel);
     }
 }

@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.csapp.bp.bookpurple.DummyDataProvider;
 import com.csapp.bp.bookpurple.R;
-import com.csapp.bp.bookpurple.model.ServiceModel;
-import com.csapp.bp.bookpurple.mvp.model.ServiceTile;
+import com.csapp.bp.bookpurple.mvp.model.grid.ServiceTile;
 import com.csapp.bp.bookpurple.util.rx.RxViewUtil;
 
 import java.util.ArrayList;

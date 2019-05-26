@@ -11,10 +11,7 @@ import android.widget.TextView;
 import com.csapp.bp.bookpurple.DummyDataProvider;
 import com.csapp.bp.bookpurple.R;
 import com.csapp.bp.bookpurple.logger.Logger;
-import com.csapp.bp.bookpurple.model.EventModel;
-import com.csapp.bp.bookpurple.mvp.model.EventTile;
-import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
-import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
+import com.csapp.bp.bookpurple.mvp.model.grid.EventTile;
 import com.csapp.bp.bookpurple.util.rx.RxViewUtil;
 
 import java.util.ArrayList;

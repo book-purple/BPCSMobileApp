@@ -1,7 +1,7 @@
 package com.csapp.bp.bookpurple.network.api;
 
-import com.csapp.bp.bookpurple.mvp.model.LandingPageRequestModel;
-import com.csapp.bp.bookpurple.mvp.model.LandingPageResponseModel;
+import com.csapp.bp.bookpurple.mvp.model.request.LandingPageRequestModel;
+import com.csapp.bp.bookpurple.mvp.model.response.LandingPageResponseModel;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
