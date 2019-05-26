@@ -12,7 +12,7 @@ public interface ListingViewPresenterContract {
 
     interface View {
 
-        void onListingDataFetched(LandingPageResponseModel landingPageResponseModel);
+        void onListingDataFetched(ListingResponseModel listingResponseModel);
 
         /**
          * Function to load the data from backend

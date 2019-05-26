@@ -2,8 +2,11 @@ package com.csapp.bp.bookpurple.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.csapp.bp.bookpurple.R;
+import com.csapp.bp.bookpurple.adapter.ListingAdapter;
 import com.csapp.bp.bookpurple.constant.Constant;
 import com.csapp.bp.bookpurple.dagger.component.ModuleComponent;
 import com.csapp.bp.bookpurple.dagger.provider.ComponentProvider;
@@ -11,6 +14,7 @@ import com.csapp.bp.bookpurple.mvp.interactor.ListingInteractor;
 import com.csapp.bp.bookpurple.mvp.interfaces.ListingViewPresenterContract;
 import com.csapp.bp.bookpurple.mvp.model.request.ListingRequestModel;
 import com.csapp.bp.bookpurple.mvp.model.response.LandingPageResponseModel;
+import com.csapp.bp.bookpurple.mvp.model.response.ListingResponseModel;
 import com.csapp.bp.bookpurple.mvp.presenter.ListingPresenter;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
 import com.csapp.bp.bookpurple.util.rx.RxUtil;
@@ -33,12 +37,15 @@ public class ListingActivity extends AppCompatActivity implements ListingViewPre
     public ListingInteractor interactor;
 
     // Rx Related Variables
-    private CompositeDisposable compositeDisposable;
+    private CompositeDisposable lifecycle;
 
     // MVP Related variables
     private ListingPresenter presenter;
 
     private ListingRequestModel listingRequestModel;
+    private RecyclerView listingRecyclerView;
+    private LinearLayoutManager linearLayoutManager;
+    private ListingAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +60,13 @@ public class ListingActivity extends AppCompatActivity implements ListingViewPre
     private void injectDependencies() {
         component = ComponentProvider.getComponent();
         component.inject(this);
-        compositeDisposable = new CompositeDisposable();
+        lifecycle = new CompositeDisposable();
 
         // create presenter
         presenter = new ListingPresenter(this,
                 interactor,
                 rxSchedulers,
-                compositeDisposable);
+                lifecycle);
     }
 
     private void handleIntent() {
@@ -77,11 +84,15 @@ public class ListingActivity extends AppCompatActivity implements ListingViewPre
     }
 
     private void initView() {
-
+        listingRecyclerView = findViewById(R.id.listing);
+        linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        listingRecyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new ListingAdapter(this, lifecycle);
+        listingRecyclerView.setAdapter(adapter);
     }
 
     @Override
-    public void onListingDataFetched(LandingPageResponseModel landingPageResponseModel) {
+    public void onListingDataFetched(ListingResponseModel listingResponseModel) {
 
     }
 

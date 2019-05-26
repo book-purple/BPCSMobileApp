@@ -32,7 +32,7 @@ public class ListingPresenter extends ListingViewPresenterContract.Presenter {
 
     @Override
     public void getListingData(ListingRequestModel listingRequestModel) {
-        Disposable disposable = listingInteractor.getListingData()
+        Disposable disposable = listingInteractor.getListingData(listingRequestModel)
                 .subscribeOn(rxSchedulers.getIOScheduler())
                 .observeOn(rxSchedulers.getMainThreadScheduler())
                 .subscribe(listingResponseModel -> {

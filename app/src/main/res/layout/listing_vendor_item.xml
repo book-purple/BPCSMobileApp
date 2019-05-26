@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/vendor_image"
+        android:layout_width="150dp"
+        android:layout_height="100dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/vendor_image"
+        android:paddingLeft="10dp"
+        android:layout_toEndOf="@+id/vendor_image">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vendor Name"
+            android:textStyle="bold"
+            android:id="@+id/name"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Service1, Service2, Service3"
+            android:layout_below="@+id/name"
+            android:textSize="12dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/provided_services"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="One Line Description..."
+            android:layout_below="@+id/provided_services"
+            android:textSize="12dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rating"
+            />
+
+    </RelativeLayout>
+</RelativeLayout>

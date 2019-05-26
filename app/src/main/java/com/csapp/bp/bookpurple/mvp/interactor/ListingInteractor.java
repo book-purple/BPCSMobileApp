@@ -19,7 +19,8 @@ public class ListingInteractor {
         this.serviceApi = serviceApi;
     }
 
-    public Observable<ListingResponseModel> getListingData() {
+    public Observable<ListingResponseModel> getListingData(ListingRequestModel listingRequestModel) {
+        return serviceApi.getListingData(listingRequestModel);
     }
 
     public ListingRequestModel createListingRequest(Tile tile) {
