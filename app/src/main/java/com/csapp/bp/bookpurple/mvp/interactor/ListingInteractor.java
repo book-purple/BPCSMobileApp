@@ -23,9 +23,10 @@ public class ListingInteractor {
         return serviceApi.getListingData(listingRequestModel);
     }
 
-    public ListingRequestModel createListingRequest(Tile tile) {
+    public ListingRequestModel createListingRequest(Tile tile, String requestType) {
         ListingRequestModel listingRequestModel = new ListingRequestModel();
         listingRequestModel.id = tile.id;
+        listingRequestModel.requestType = requestType;
         return listingRequestModel;
     }
 }

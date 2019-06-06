@@ -10,10 +10,9 @@ import android.view.ViewGroup;
 import com.csapp.bp.bookpurple.R;
 import com.csapp.bp.bookpurple.adapter.viewholder.ListingVendorItemViewHolder;
 import com.csapp.bp.bookpurple.adapter.viewholder.ListingViewHolder;
-import com.csapp.bp.bookpurple.constant.Constant;
 import com.csapp.bp.bookpurple.enums.ListingItemViewType;
 import com.csapp.bp.bookpurple.mvp.model.response.ListingResponseModel;
-import com.csapp.bp.bookpurple.mvp.model.response.listing.ListingItem;
+import com.csapp.bp.bookpurple.mvp.model.response.listing.ListingItemData;
 import com.csapp.bp.bookpurple.publishsubject.VendorClickedItem;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
     private Context context;
     private CompositeDisposable compositeDisposable;
     private ListingResponseModel listingResponseModel;
-    private List<ListingItem> listingItemList;
+    private List<ListingItemData> listingItemList;
     private LayoutInflater layoutInflater;
     private PublishSubject<VendorClickedItem> vendorClickedItemPublishSubject;
 
@@ -42,9 +41,10 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
         this.vendorClickedItemPublishSubject = PublishSubject.create();
     }
 
-    public void setData(List<ListingItem> listingItemList) {
+    public void setData(List<ListingItemData> listingItemList) {
         this.listingItemList.clear();
         this.listingItemList.addAll(listingItemList);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -68,7 +68,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if (Constant.VENDOR_LISTING_ITEM.equalsIgnoreCase(listingItemList.get(position).itemType)) {
+        if (ListingItemViewType.VIEW_TYPE_VENDOR == listingItemList.get(position).viewType) {
             return ListingItemViewType.VIEW_TYPE_VENDOR;
         } else {
             return ListingItemViewType.BANNER;

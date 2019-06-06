@@ -4,23 +4,24 @@ import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
-import java.util.List;
-
 /*
  * Written by Gaurav Sharma on 2019-05-26.
  */
 @Parcel
-public class VendorListingData extends ListingItem {
+public class VendorListingData extends ListingItemData {
 
-    @SerializedName("name")
+    @SerializedName("vendor_id")
+    public String id;
+
+    @SerializedName("vendor_name")
     public String name;
 
-    @SerializedName("image")
+    @SerializedName("vendor_image")
     public String image;
 
-    @SerializedName("providedServices")
-    public List<String> providedServices;
+    @SerializedName("vendor_rating")
+    public double rating;
 
-    @SerializedName("rating")
-    public Long rating;
+    @SerializedName("vendor_desc")
+    public String desc;
 }

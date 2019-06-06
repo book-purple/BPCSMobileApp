@@ -1,5 +1,6 @@
 package com.csapp.bp.bookpurple.mvp.presenter;
 
+import com.csapp.bp.bookpurple.logger.Logger;
 import com.csapp.bp.bookpurple.mvp.interactor.ListingInteractor;
 import com.csapp.bp.bookpurple.mvp.interfaces.ListingViewPresenterContract;
 import com.csapp.bp.bookpurple.mvp.model.request.ListingRequestModel;
@@ -14,7 +15,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class ListingPresenter extends ListingViewPresenterContract.Presenter {
 
-
+    private static final String TAG = ListingPresenter.class.getSimpleName();
     private ListingInteractor listingInteractor;
     private RxSchedulersAbstractBase rxSchedulers;
     private CompositeDisposable compositeDisposable;
@@ -44,9 +45,9 @@ public class ListingPresenter extends ListingViewPresenterContract.Presenter {
                         }
                     }
                 }, throwable -> {
-
+                    Logger.logException(TAG, throwable);
                 });
-
+        compositeDisposable.add(disposable);
     }
 
     @Override

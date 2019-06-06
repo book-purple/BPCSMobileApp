@@ -51,7 +51,7 @@ public class ListingVendorItemViewHolder extends ListingViewHolder<VendorListing
     @Override
     public void bindData(VendorListingData item, int position) {
         vendorName.setText(item.name);
-        providedServices.setText(getProvidedServices(item.providedServices));
+        providedServices.setText(item.desc);
         vendorRating.setText(String.valueOf(item.rating));
 
         RxViewUtil.click(view)

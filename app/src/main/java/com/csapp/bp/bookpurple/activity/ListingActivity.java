@@ -15,6 +15,7 @@ import com.csapp.bp.bookpurple.mvp.interfaces.ListingViewPresenterContract;
 import com.csapp.bp.bookpurple.mvp.model.request.ListingRequestModel;
 import com.csapp.bp.bookpurple.mvp.model.response.LandingPageResponseModel;
 import com.csapp.bp.bookpurple.mvp.model.response.ListingResponseModel;
+import com.csapp.bp.bookpurple.mvp.model.response.listing.VendorListingData;
 import com.csapp.bp.bookpurple.mvp.presenter.ListingPresenter;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
 import com.csapp.bp.bookpurple.util.rx.RxUtil;
@@ -78,7 +79,8 @@ public class ListingActivity extends AppCompatActivity implements ListingViewPre
                 listingRequestModel = interactor
                         .createListingRequest(Parcels
                                 .unwrap(bundle
-                                        .getParcelable(Constant.ParcelConstant.LISTING_REQUEST_MODEL)));
+                                        .getParcelable(Constant.ParcelConstant.LISTING_REQUEST_MODEL)),
+                                bundle.getString(Constant.ParcelConstant.LISTING_REQUEST_TYPE));
             }
         }
     }
@@ -93,7 +95,9 @@ public class ListingActivity extends AppCompatActivity implements ListingViewPre
 
     @Override
     public void onListingDataFetched(ListingResponseModel listingResponseModel) {
-
+        if (null != listingResponseModel) {
+            adapter.setData(listingResponseModel.listingItems);
+        }
     }
 
     @Override

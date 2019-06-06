@@ -1,6 +1,7 @@
 package com.csapp.bp.bookpurple.network;
 
 import com.csapp.bp.bookpurple.BuildConfig;
+import com.csapp.bp.bookpurple.core.GsonUtil;
 import com.csapp.bp.bookpurple.logger.Logger;
 import com.csapp.bp.bookpurple.network.logger.HttpLoggingInterceptor;
 import com.csapp.bp.bookpurple.network.parser.NullOnEmptyConverterFactory;
@@ -121,7 +122,7 @@ public class RetrofitProvider {
      */
     private Retrofit.Builder provideRetrofitBuilder() {
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder();
-        retrofitBuilder.addConverterFactory(new NullOnEmptyConverterFactory());
+        retrofitBuilder.addConverterFactory(GsonConverterFactory.create(GsonUtil.getInstance().getGson()));
         retrofitBuilder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());
         if (builder.getRuntimeTypeAdapterFactoryList() != null &&
                 !builder.getRuntimeTypeAdapterFactoryList().isEmpty()) {

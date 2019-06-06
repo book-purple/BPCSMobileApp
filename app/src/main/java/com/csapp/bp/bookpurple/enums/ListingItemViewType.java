@@ -1,7 +1,6 @@
 package com.csapp.bp.bookpurple.enums;
 
 import android.support.annotation.IntDef;
-import android.support.annotation.StringDef;
 
 /*
  * Written by Gaurav Sharma on 2019-05-26.

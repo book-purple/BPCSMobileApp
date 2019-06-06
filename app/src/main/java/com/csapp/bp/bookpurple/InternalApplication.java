@@ -2,6 +2,7 @@ package com.csapp.bp.bookpurple;
 
 import android.content.Context;
 
+import com.csapp.bp.bookpurple.core.GsonUtil;
 import com.facebook.stetho.Stetho;
 
 /*
@@ -36,5 +37,6 @@ public final class InternalApplication {
 
     public void initFlow() {
         Stetho.initializeWithDefaults(application);
+        GsonUtil.getInstance();
     }
 }

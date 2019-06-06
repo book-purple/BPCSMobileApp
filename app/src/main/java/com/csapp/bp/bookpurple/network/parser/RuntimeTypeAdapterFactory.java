@@ -20,7 +20,7 @@ import java.util.Map;
 /*
  * Written by gauravsharma on 2019-05-19.
  */
-public class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
+public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
 
     private static final String TAG = RuntimeTypeAdapterFactory.class.getName();
 

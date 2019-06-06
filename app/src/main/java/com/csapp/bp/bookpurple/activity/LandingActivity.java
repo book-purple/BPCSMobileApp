@@ -151,7 +151,7 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
         Disposable eventClickSubscription = eventAdapter.getEventTilePublishSubject()
                 .subscribe(event -> {
                     Logger.log(event.name);
-                    startListingActivity(event);
+                    startListingActivity(event, Constant.LISTING_TYPE_EVENT);
                 },throwable -> Logger.logException(TAG, throwable));
 
         compositeDisposable.add(eventClickSubscription);
@@ -160,16 +160,17 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
         Disposable serviceClickSubscription = serviceAdapter.getServiceModelPublishSubject()
                 .subscribe(service -> {
                     Logger.log(service.name);
-                    startListingActivity(service);
+                    startListingActivity(service, Constant.LISTING_TYPE_SERVICE);
                 }, throwable -> Logger.logException(TAG, throwable));
 
         compositeDisposable.add(serviceClickSubscription);
     }
 
-    private void startListingActivity(Tile tile) {
+    private void startListingActivity(Tile tile, String requestType) {
         Intent intent = new Intent(getApplicationContext(), ListingActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable(Constant.ParcelConstant.LISTING_REQUEST_MODEL, Parcels.wrap(tile));
+        bundle.putString(Constant.ParcelConstant.LISTING_REQUEST_TYPE, requestType);
         intent.putExtras(bundle);
         startActivity(intent);
     }

@@ -18,6 +18,6 @@ public interface ServiceApi {
     @POST("/catalog/v1/landing")
     Observable<LandingPageResponseModel> getLandingData(@Body LandingPageRequestModel landingPageRequestModel);
 
-    @POST("https://bp-catalog-service.herokuapp.com/catalog/v1/listing")
+    @POST("/catalog/v1/listing")
     Observable<ListingResponseModel> getListingData(@Body ListingRequestModel listingRequestModel);
 }
