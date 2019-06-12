@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BookPurple</string>
+    <string name="title_activity_services_listing">ServicesListing</string>
 </resources>

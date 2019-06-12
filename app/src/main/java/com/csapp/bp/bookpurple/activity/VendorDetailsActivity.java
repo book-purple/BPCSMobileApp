@@ -1,13 +1,15 @@
-package com.csapp.bp.bookpurple;
+package com.csapp.bp.bookpurple.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class BPMainActivity extends AppCompatActivity {
+import com.csapp.bp.bookpurple.R;
+
+public class VendorDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bpmain);
+        setContentView(R.layout.activity_vendor_details);
     }
 }
