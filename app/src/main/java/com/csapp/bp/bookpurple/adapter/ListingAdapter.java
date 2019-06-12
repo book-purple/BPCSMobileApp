@@ -79,4 +79,8 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
     public int getItemCount() {
         return listingItemList.size();
     }
+
+    public PublishSubject<VendorClickedItem> getVendorClickedItemPublishSubject() {
+        return this.vendorClickedItemPublishSubject;
+    }
 }

@@ -2,12 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginBottom="10dp"
     android:padding="10dp">
 
     <ImageView
         android:id="@+id/vendor_image"
         android:layout_width="150dp"
-        android:layout_height="100dp" />
+        android:layout_height="80dp"
+        android:src="@drawable/default_img"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -39,7 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="One Line Description..."
+            android:text="4.1"
             android:layout_below="@+id/provided_services"
             android:textSize="12dp"
             android:layout_marginTop="10dp"
