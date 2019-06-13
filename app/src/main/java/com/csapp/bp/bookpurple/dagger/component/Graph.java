@@ -12,7 +12,7 @@ import dagger.Component;
  */
 @Singleton
 @Component(modules = {MainModule.class, NetworkModule.class})
-public interface Graph extends ModuleComponent{
+public interface Graph extends ModuleComponent {
 
     final class Initializer {
         public static Graph initialize() {

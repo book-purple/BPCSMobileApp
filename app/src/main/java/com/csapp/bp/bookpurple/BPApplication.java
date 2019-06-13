@@ -7,8 +7,8 @@ import android.app.Application;
  */
 public class BPApplication extends Application {
 
-    private InternalApplication internalApplication;
     private static BPApplication application;
+    private InternalApplication internalApplication;
 
     @Override
     public void onCreate() {

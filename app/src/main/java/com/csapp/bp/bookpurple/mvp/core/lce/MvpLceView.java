@@ -11,21 +11,30 @@ import com.csapp.bp.bookpurple.mvp.core.MvpView;
 public interface MvpLceView<T> extends MvpView {
 
     View getNoContentView();
+
     View getContentView();
+
     View getNetworkErrorView();
+
     View getErrorView();
+
     View getLoadingView();
 
     @UiThread
     void onLoadStart();
+
     @UiThread
     void onNoContent();
+
     @UiThread
     void setCachedContent(T t);
+
     @UiThread
     void setContent(T t);
+
     @UiThread
     void onNetworkError(Throwable throwable);
+
     @UiThread
     void onError(Throwable throwable);
 

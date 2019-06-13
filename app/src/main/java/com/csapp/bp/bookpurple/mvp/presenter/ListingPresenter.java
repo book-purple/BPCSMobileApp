@@ -39,6 +39,7 @@ public class ListingPresenter extends ListingViewPresenterContract.Presenter {
                 .subscribe(listingResponseModel -> {
                     if (isViewAttached()) {
                         if (isNoContent(listingResponseModel)) {
+                            // TODO: handle empty cases also
                             getView().dataFetchFailure(new Throwable("Data is NULL"));
                         } else {
                             getView().onListingDataFetched(listingResponseModel);

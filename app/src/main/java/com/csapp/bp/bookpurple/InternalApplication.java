@@ -15,6 +15,10 @@ public final class InternalApplication {
 
     private Context application;
 
+    private InternalApplication(Context application) {
+        this.application = application;
+    }
+
     public static InternalApplication getApplication() {
         if (internalApplication == null) {
             throw new NullPointerException("Internal Application class not intialized");
@@ -25,10 +29,6 @@ public final class InternalApplication {
     public static InternalApplication initialize(Context application) {
         internalApplication = new InternalApplication(application);
         return internalApplication;
-    }
-
-    private InternalApplication(Context application) {
-        this.application = application;
     }
 
     public Context getApplicationContext() {

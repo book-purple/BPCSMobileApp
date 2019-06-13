@@ -25,6 +25,10 @@ public class NetworkWrapper {
         retrofit = provider.getRetrofit();
     }
 
+    public Retrofit getRetrofit() {
+        return retrofit;
+    }
+
     /**
      * Builder class to provide network wrapper instance
      */
@@ -46,46 +50,6 @@ public class NetworkWrapper {
 
         public Builder(Context application) {
             this.application = application;
-        }
-
-        /**
-         * Setter method for API base url
-         *
-         * @param baseUrl base url value
-         */
-        public Builder setBaseUrl(String baseUrl) {
-            this.baseUrl = baseUrl;
-            return this;
-        }
-
-        /**
-         * Setter method for network wrapper cache size
-         *
-         * @param cacheSize cache size value
-         */
-        public Builder setCacheSize(long cacheSize) {
-            this.cacheSize = cacheSize;
-            return this;
-        }
-
-        /**
-         * Setter for configuring filter certificates
-         *
-         * @param certificates list of certificate hash
-         */
-        public Builder setCertificates(List<CertificateModel> certificates) {
-            this.certificates = certificates;
-            return this;
-        }
-
-        /**
-         * Setter for request headers
-         *
-         * @param headersBuilder request headers map
-         */
-        public Builder setHeadersBuilder(HashMap<String, String> headersBuilder) {
-            this.headersBuilder = headersBuilder;
-            return this;
         }
 
         /**
@@ -164,12 +128,32 @@ public class NetworkWrapper {
         }
 
         /**
+         * Setter method for API base url
+         *
+         * @param baseUrl base url value
+         */
+        public Builder setBaseUrl(String baseUrl) {
+            this.baseUrl = baseUrl;
+            return this;
+        }
+
+        /**
          * Getter for returning cache size
          *
          * @return cache size
          */
         long getCacheSize() {
             return cacheSize;
+        }
+
+        /**
+         * Setter method for network wrapper cache size
+         *
+         * @param cacheSize cache size value
+         */
+        public Builder setCacheSize(long cacheSize) {
+            this.cacheSize = cacheSize;
+            return this;
         }
 
         /**
@@ -182,12 +166,32 @@ public class NetworkWrapper {
         }
 
         /**
+         * Setter for configuring filter certificates
+         *
+         * @param certificates list of certificate hash
+         */
+        public Builder setCertificates(List<CertificateModel> certificates) {
+            this.certificates = certificates;
+            return this;
+        }
+
+        /**
          * Getter for returning headers map
          *
          * @return headers map
          */
         HashMap<String, String> getHeadersBuilder() {
             return headersBuilder;
+        }
+
+        /**
+         * Setter for request headers
+         *
+         * @param headersBuilder request headers map
+         */
+        public Builder setHeadersBuilder(HashMap<String, String> headersBuilder) {
+            this.headersBuilder = headersBuilder;
+            return this;
         }
 
         /**
@@ -253,9 +257,5 @@ public class NetworkWrapper {
             return runtimeTypeAdapterFactoryList;
         }
 
-    }
-
-    public Retrofit getRetrofit() {
-        return retrofit;
     }
 }

@@ -37,16 +37,14 @@ import io.reactivex.disposables.Disposable;
 public class ListingActivity extends AppCompatActivity implements ListingViewPresenterContract.View {
 
     private static final String TAG = ListingActivity.class.getSimpleName();
-
-    // Dagger related variables
-    protected ModuleComponent component;
     @Inject
     public RxUtil rxUtil;
     @Inject
     public RxSchedulersAbstractBase rxSchedulers;
     @Inject
     public ListingInteractor interactor;
-
+    // Dagger related variables
+    protected ModuleComponent component;
     // Rx Related Variables
     private CompositeDisposable lifecycle;
 

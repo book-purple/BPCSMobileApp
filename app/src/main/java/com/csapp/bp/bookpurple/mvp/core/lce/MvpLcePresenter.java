@@ -240,21 +240,6 @@ public abstract class MvpLcePresenter<V extends MvpLceView<T>, T> extends MvpBas
                 }), false);
     }
 
-    public class ResultWrapper {
-        public T value;
-        public boolean isFromCache;
-
-        public ResultWrapper(T value, boolean isFromCache) {
-            this.value = value;
-            this.isFromCache = isFromCache;
-        }
-
-        @Override
-        public String toString() {
-            return isFromCache + " : " + value;
-        }
-    }
-
     // Override by other
     protected void log(Object object) {
 
@@ -271,5 +256,20 @@ public abstract class MvpLcePresenter<V extends MvpLceView<T>, T> extends MvpBas
 
     protected void inNoContent(T t) {
         getView().onNoContent();
+    }
+
+    public class ResultWrapper {
+        public T value;
+        public boolean isFromCache;
+
+        public ResultWrapper(T value, boolean isFromCache) {
+            this.value = value;
+            this.isFromCache = isFromCache;
+        }
+
+        @Override
+        public String toString() {
+            return isFromCache + " : " + value;
+        }
     }
 }

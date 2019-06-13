@@ -4,7 +4,6 @@ import com.csapp.bp.bookpurple.BuildConfig;
 import com.csapp.bp.bookpurple.core.GsonUtil;
 import com.csapp.bp.bookpurple.logger.Logger;
 import com.csapp.bp.bookpurple.network.logger.HttpLoggingInterceptor;
-import com.csapp.bp.bookpurple.network.parser.NullOnEmptyConverterFactory;
 import com.csapp.bp.bookpurple.network.parser.ResponseParser;
 import com.csapp.bp.bookpurple.network.util.NetworkUtils;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
@@ -90,7 +89,7 @@ public class RetrofitProvider {
         });
         okHttpBuilder.addNetworkInterceptor(httpLoggingInterceptor);
 
-        if (BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             okHttpBuilder.addNetworkInterceptor(new StethoInterceptor());
         }
 

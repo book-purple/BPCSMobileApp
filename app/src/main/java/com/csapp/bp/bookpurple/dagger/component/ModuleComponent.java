@@ -10,6 +10,8 @@ import com.csapp.bp.bookpurple.activity.VendorDetailsActivity;
 public interface ModuleComponent {
 
     void inject(LandingActivity landingActivity);
+
     void inject(ListingActivity listingActivity);
+
     void inject(VendorDetailsActivity vendorDetailsActivity);
 }

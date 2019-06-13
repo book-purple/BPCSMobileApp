@@ -7,14 +7,13 @@ import com.google.gson.annotations.SerializedName;
  */
 public class LandingPageRequestModel {
 
+    @SerializedName("lat")
+    public Long lat;
+    @SerializedName("lang")
+    public Long lang;
+
     public LandingPageRequestModel(Long lat, Long lang) {
         this.lat = lat;
         this.lang = lang;
     }
-
-    @SerializedName("lat")
-    public Long lat;
-
-    @SerializedName("lang")
-    public Long lang;
 }

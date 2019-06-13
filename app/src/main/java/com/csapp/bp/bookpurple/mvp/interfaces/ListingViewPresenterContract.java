@@ -2,7 +2,6 @@ package com.csapp.bp.bookpurple.mvp.interfaces;
 
 import com.csapp.bp.bookpurple.mvp.core.MvpBasePresenterV2;
 import com.csapp.bp.bookpurple.mvp.model.request.ListingRequestModel;
-import com.csapp.bp.bookpurple.mvp.model.response.LandingPageResponseModel;
 import com.csapp.bp.bookpurple.mvp.model.response.ListingResponseModel;
 
 /*

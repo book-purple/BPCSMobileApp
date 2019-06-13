@@ -36,7 +36,8 @@ public class RxViewUtil {
         RxView.clicks(view).
                 throttleFirst(1L, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((s) -> {});
+                .subscribe((s) -> {
+                });
     }
 
     @SuppressLint({"CheckResult"})
@@ -45,7 +46,7 @@ public class RxViewUtil {
                 throttleFirst(millis, TimeUnit.MILLISECONDS).
                 observeOn(AndroidSchedulers.mainThread()).
                 subscribe((s) -> {
-        });
+                });
     }
 
     public static Observable<MotionEvent> touches(View view) {
@@ -67,7 +68,7 @@ public class RxViewUtil {
 
     public static Observable<Object> longClick(View view, int throttleSeconds) {
         return RxView.longClicks(view)
-                .throttleFirst((long)throttleSeconds, TimeUnit.SECONDS)
+                .throttleFirst((long) throttleSeconds, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread());
     }
 

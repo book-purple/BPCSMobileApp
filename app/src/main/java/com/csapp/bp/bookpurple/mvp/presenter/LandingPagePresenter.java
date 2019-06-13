@@ -30,6 +30,7 @@ public class LandingPagePresenter extends LandingViewPresenterContract.Presenter
 
     /**
      * Function to get Landing Page Data from API
+     *
      * @param landingPageRequestModel landingPageResponseModel
      */
     @Override

@@ -2,6 +2,7 @@ package com.csapp.bp.bookpurple.dagger.module;
 
 import com.csapp.bp.bookpurple.mvp.interactor.LandingPageInteractor;
 import com.csapp.bp.bookpurple.mvp.interactor.ListingInteractor;
+import com.csapp.bp.bookpurple.mvp.interactor.VendorDetailsPageInteractor;
 import com.csapp.bp.bookpurple.network.api.ServiceApi;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulers;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
@@ -29,6 +30,12 @@ public class MainModule {
     @Singleton
     public ListingInteractor getListingInteractor(@Named("serviceApi") ServiceApi serviceApi) {
         return new ListingInteractor(serviceApi);
+    }
+
+    @Provides
+    @Singleton
+    public VendorDetailsPageInteractor getVendorDetailsPageInteractor(@Named("serviceApi") ServiceApi serviceApi) {
+        return new VendorDetailsPageInteractor(serviceApi);
     }
 
     @Provides

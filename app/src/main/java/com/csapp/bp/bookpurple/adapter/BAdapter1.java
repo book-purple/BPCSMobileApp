@@ -44,7 +44,7 @@ public class BAdapter1 extends RecyclerView.Adapter<BAdapter1.BViewHolder> {
         return businessModels.size();
     }
 
-    public class BViewHolder extends RecyclerView.ViewHolder{
+    public class BViewHolder extends RecyclerView.ViewHolder {
 
         private TextView text;
         private RelativeLayout relativeLayout;

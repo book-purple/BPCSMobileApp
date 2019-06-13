@@ -46,7 +46,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferListV
     }
 
 
-    public class OfferListViewHolder extends RecyclerView.ViewHolder{
+    public class OfferListViewHolder extends RecyclerView.ViewHolder {
 
         private TextView text;
         private RelativeLayout offerBannerRl;

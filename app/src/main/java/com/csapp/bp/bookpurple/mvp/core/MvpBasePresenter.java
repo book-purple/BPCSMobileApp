@@ -19,6 +19,7 @@ public abstract class MvpBasePresenter<V extends MvpView> implements MvpPresente
 
     /**
      * Function to check if the view is still attached to presenter.
+     *
      * @return
      */
     public boolean isViewAttached() {
@@ -28,6 +29,7 @@ public abstract class MvpBasePresenter<V extends MvpView> implements MvpPresente
     /**
      * Get the attached View. Call this function to check
      * if the view is attached to avoid Null Pointer Exception.
+     *
      * @return
      */
     @Nullable

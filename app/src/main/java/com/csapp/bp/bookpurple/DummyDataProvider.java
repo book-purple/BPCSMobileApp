@@ -7,7 +7,6 @@ import com.csapp.bp.bookpurple.model.ServiceModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class DummyDataProvider {
 
@@ -24,30 +23,6 @@ public class DummyDataProvider {
     private List<EventModel> eventModels;
     private List<ServiceModel> serviceModels;
     private List<BusinessModel> businessModels1;
-
-    public List<LandingOffersModel> getLandingOffersModels() {
-        return landingOffersModels;
-    }
-
-    public List<EventModel> getEventModels() {
-        return eventModels;
-    }
-
-    public List<ServiceModel> getServiceModels() {
-        return serviceModels;
-    }
-
-    public List<BusinessModel> getBusinessModels1 () {
-        return businessModels1;
-    }
-
-    public List<String> getSericeName() {
-        return serviceName;
-    }
-
-    public List<Integer> getImages() {
-        return servicesImages;
-    }
 
     public DummyDataProvider() {
 
@@ -73,6 +48,30 @@ public class DummyDataProvider {
         populateEventModels();
         populateServiceModels();
         populateBusinessModels1();
+    }
+
+    public List<LandingOffersModel> getLandingOffersModels() {
+        return landingOffersModels;
+    }
+
+    public List<EventModel> getEventModels() {
+        return eventModels;
+    }
+
+    public List<ServiceModel> getServiceModels() {
+        return serviceModels;
+    }
+
+    public List<BusinessModel> getBusinessModels1() {
+        return businessModels1;
+    }
+
+    public List<String> getSericeName() {
+        return serviceName;
+    }
+
+    public List<Integer> getImages() {
+        return servicesImages;
     }
 
     private void populateLandingOffersBanner() {
@@ -111,7 +110,7 @@ public class DummyDataProvider {
         }
     }
 
-    private void populateLandingBannerData () {
+    private void populateLandingBannerData() {
         landingOfferBannerName.add("Banner1");
         landingOfferBannerName.add("Banner2");
         landingOfferBannerName.add("Banner3");
@@ -178,6 +177,6 @@ public class DummyDataProvider {
     public int getRandomNumber() {
         int max = 9;
         int min = 0;
-        return (int)(Math.random() * ((max - min) + 1)) + min;
+        return (int) (Math.random() * ((max - min) + 1)) + min;
     }
 }

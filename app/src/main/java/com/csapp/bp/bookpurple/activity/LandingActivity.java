@@ -1,8 +1,8 @@
 package com.csapp.bp.bookpurple.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +24,6 @@ import com.csapp.bp.bookpurple.mvp.interactor.LandingPageInteractor;
 import com.csapp.bp.bookpurple.mvp.interfaces.LandingViewPresenterContract;
 import com.csapp.bp.bookpurple.mvp.model.grid.Tile;
 import com.csapp.bp.bookpurple.mvp.model.request.LandingPageRequestModel;
-import com.csapp.bp.bookpurple.mvp.model.request.ListingRequestModel;
 import com.csapp.bp.bookpurple.mvp.model.response.LandingPageResponseModel;
 import com.csapp.bp.bookpurple.mvp.presenter.LandingPagePresenter;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
@@ -41,29 +40,6 @@ import io.reactivex.disposables.Disposable;
 public class LandingActivity extends AppCompatActivity implements LandingViewPresenterContract.View {
 
     private static final String TAG = LandingActivity.class.getSimpleName();
-
-    protected ModuleComponent component;
-
-    private RecyclerView offerRv;
-    private OffersAdapter offersAdapter;
-
-    private GridEventAdapter eventAdapter;
-    private GridServiceAdapter serviceAdapter;
-    private GridLayoutManager gridEventLayoutManager;
-    private RecyclerView eventRecyclerView;
-    private GridLayoutManager gridServiceLayoutManager;
-    private RecyclerView serviceRecyclerView;
-
-    private RelativeLayout contentLayout;
-    private ShimmerFrameLayout landingShimmerLayout;
-
-    /*Business Banners*/
-    private RecyclerView brv1;
-    private BAdapter1 bAdapter1;
-
-    private RecyclerView brv2;
-    private BAdapter2 bAdapter2;
-
     // Dagger related variables
     @Inject
     public RxUtil rxUtil;
@@ -71,7 +47,22 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
     public RxSchedulersAbstractBase rxSchedulers;
     @Inject
     public LandingPageInteractor interactor;
-
+    protected ModuleComponent component;
+    private RecyclerView offerRv;
+    private OffersAdapter offersAdapter;
+    private GridEventAdapter eventAdapter;
+    private GridServiceAdapter serviceAdapter;
+    private GridLayoutManager gridEventLayoutManager;
+    private RecyclerView eventRecyclerView;
+    private GridLayoutManager gridServiceLayoutManager;
+    private RecyclerView serviceRecyclerView;
+    private RelativeLayout contentLayout;
+    private ShimmerFrameLayout landingShimmerLayout;
+    /*Business Banners*/
+    private RecyclerView brv1;
+    private BAdapter1 bAdapter1;
+    private RecyclerView brv2;
+    private BAdapter2 bAdapter2;
     // MVP Related Variables
     private LandingPagePresenter presenter;
 
@@ -152,7 +143,7 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
                 .subscribe(event -> {
                     Logger.log(event.name);
                     startListingActivity(event, Constant.LISTING_TYPE_EVENT);
-                },throwable -> Logger.logException(TAG, throwable));
+                }, throwable -> Logger.logException(TAG, throwable));
 
         compositeDisposable.add(eventClickSubscription);
 
@@ -185,6 +176,7 @@ public class LandingActivity extends AppCompatActivity implements LandingViewPre
 
     /**
      * Function to provide Data from API to activity
+     *
      * @param landingPageResponseModel landingPageResponseModel
      */
     @Override
