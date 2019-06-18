@@ -7,6 +7,8 @@ import com.csapp.bp.bookpurple.mvp.interfaces.VendorDetailsViewPresenterContract
 import com.csapp.bp.bookpurple.mvp.model.response.VendorDetailsPageResponseModel;
 import com.csapp.bp.bookpurple.util.rx.RxSchedulersAbstractBase;
 
+import java.util.List;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -20,11 +22,11 @@ public class VendorDetailsPagePresenter extends VendorDetailsViewPresenterContra
     private VendorDetailsPageInteractor interactor;
     private RxSchedulersAbstractBase rxSchedulers;
 
-    public VendorDetailsPagePresenter(Context context,
+    public VendorDetailsPagePresenter(VendorDetailsViewPresenterContract.View view,
                                       CompositeDisposable lifecycle,
                                       VendorDetailsPageInteractor vendorDetailsPageInteractor,
                                       RxSchedulersAbstractBase rxSchedulers) {
-        this.context = context;
+        attachView(view);
         this.lifecycle = lifecycle;
         this.interactor = vendorDetailsPageInteractor;
         this.rxSchedulers = rxSchedulers;
@@ -57,5 +59,13 @@ public class VendorDetailsPagePresenter extends VendorDetailsViewPresenterContra
     @Override
     public boolean inNoContent(VendorDetailsPageResponseModel vendorDetailsPageResponseModel) {
         return false;
+    }
+
+    public String getProvidedServices(List<String> providedServices) {
+        StringBuilder services = new StringBuilder();
+        for(String service: providedServices) {
+            services.append(service).append(",");
+        }
+        return services.toString();
     }
 }

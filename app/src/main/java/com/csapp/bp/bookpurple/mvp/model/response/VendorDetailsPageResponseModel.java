@@ -19,30 +19,30 @@ public class VendorDetailsPageResponseModel {
     public static class VendorDetails {
 
         @SerializedName("id")
-        private String id;
+        public String id;
 
         @SerializedName("vendorId")
-        private String vendorId;
+        public String vendorId;
 
         @SerializedName("vendorName")
-        private String vendorName;
+        public String vendorName;
 
         @SerializedName("vendorDesc")
-        private String vendorDesc;
+        public String vendorDesc;
 
         @SerializedName("reviewCount")
-        private int reviewCount;
+        public int reviewCount;
 
         @SerializedName("location")
-        private String location;
+        public String location;
 
         @SerializedName("providedServices")
-        private List<String> providedServices;
+        public List<String> providedServices;
 
         @SerializedName("tags")
-        private List<String> tags;
+        public List<String> tags;
 
         @SerializedName("images")
-        private List<String> images;
+        public List<String> images;
     }
 }
